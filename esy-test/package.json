@@ -3,6 +3,9 @@
     "build": "which cmake"
   },
   "dependencies": {
-    "esy-cmake": "3.26.3000"
+    "esy-cmake": "4.3.1"
+  },
+  "resolutions": {
+    "esy-cmake": "link:../esy.json"
   }
 }

@@ -16,22 +16,23 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
+      - name: Use Node.js 22.13.1
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22.13.1
+
+      # Install `esy` to build the project
+      # It also adds `shx` globally for cross-platform shell commands
+      - name: Setup environment
+        run:
+          npm i -g esy@0.9.2
+          npm i -g shx
+        
       - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Use Node.js 14.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 14.x
-
-      - name: Install esy, verdaccio and esy-package
-        run: npm install -g @esy-nightly/esy verdaccio esy-package@dev
-
-      - name: Run end-to-end tests on the package 
-        run: DEBUG=bale*,verdaccio* esy-package
-        shell: bash
-
-      - uses: actions/upload-artifact@v3
-        with:
-          name: release
-          path: package.tar.gz
+        uses: actions/checkout@v6
+      
+      - name: Install and build
+        run: |
+          cd ./esy-test/
+          esy install
+          esy build

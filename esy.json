@@ -1,8 +1,8 @@
 {
   "name": "esy-cmake",
-  "version": "3.26.3000",
+  "version": "4.2.1",
   "description": "CMake packaged for esy",
-  "source": "https://github.com/Kitware/CMake/releases/download/v3.26.3/cmake-3.26.3.tar.gz#sha256:bbd8d39217509d163cb544a40d6428ac666ddc83e22905d3e52c925781f0f659",
+  "source": "https://github.com/Kitware/CMake/releases/download/v4.3.1/cmake-4.3.1.tar.gz#sha256:0798f4be7a1a406a419ac32db90c2956936fecbf50db3057d7af47d69a2d7edb",
   "override": {
     "buildEnv": {
       "CXX": "#{os == 'windows' ? 'x86_64-w64-mingw32-g++': 'c++'}",
